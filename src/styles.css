@@ -1,0 +1,80 @@
+body {
+  margin: 0;
+  font-size: 14px;
+  font-family: sans-serif;
+}
+
+.app-container {
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+.header-containenr {
+  height: 4rem;
+  width: 100%;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0px 3px 0px black;
+}
+
+.header-containenr input[type='button'] {
+  right: 0.5rem;
+  position: absolute;
+  height: 3rem;
+  width: 3rem;
+  font-size: 2rem;
+}
+
+.content-container {
+  height: calc(100vh - 4rem - 1px);
+  width: 100%;
+}
+
+.message-list-container {
+  overflow: scroll;
+  height: calc(100% - 4rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.message-list-container :last-child {
+  margin-bottom: 0.5rem;
+}
+
+.message-item-container {
+  margin: 0.5rem 0.5rem 0 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  max-width: 50%;
+  width: fit-content;
+  word-break: break-word;
+}
+
+.input-bar-container {
+  position: fixed;
+  height: 3rem;
+  bottom: 0px;
+  width: calc(100% - 1rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  box-shadow: 0px 0px 3px 0px black;
+}
+
+.input-bar-container input[type='text'] {
+  flex: 1;
+  height: 2rem;
+  margin-right: 1rem;
+  padding: 0 0.5rem;
+  font-size: 1rem;
+}
+
+.input-bar-container input[type='button'] {
+  height: 3rem;
+  width: 3rem;
+  font-size: 2rem;
+}
