@@ -43,6 +43,7 @@ const AskNamePage = ({ setUserName }) => {
   }
   return (
     <div className="ask-name-page-container">
+      <div>Your Name</div>
       <input type="text" value={text} onChange={onChange} />
       <input type="button" value={'Start'} onClick={sendMessage} />
     </div>
