@@ -9,17 +9,27 @@ body {
   min-height: 100vh;
 }
 
-.header-containenr {
+.ask-name-page-container {
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.header-container {
   height: 4rem;
   width: 100%;
   font-size: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 0px 3px 0px black;
+  border-bottom: 1px solid black;
 }
 
-.header-containenr input[type='button'] {
+.header-container input[type='button'] {
   right: 0.5rem;
   position: absolute;
   height: 3rem;
@@ -39,18 +49,26 @@ body {
   flex-direction: column;
 }
 
-.message-list-container :last-child {
-  margin-bottom: 0.5rem;
-}
-
 .message-item-container {
   margin: 0.5rem 0.5rem 0 0.5rem;
+  max-width: 50%;
+}
+
+.message-item-author {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.message-item-content-container {
   padding: 0.5rem;
   border: 1px solid black;
   border-radius: 0.5rem;
-  max-width: 50%;
   width: fit-content;
   word-break: break-word;
+}
+
+.message-item-date {
+  font-size: 0.5rem;
 }
 
 .input-bar-container {
@@ -62,7 +80,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 0.5rem;
-  box-shadow: 0px 0px 3px 0px black;
+  border-top: 1px solid black;
 }
 
 .input-bar-container input[type='text'] {
