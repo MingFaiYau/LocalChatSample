@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Container = styled.div`
-  padding: 25px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,9 +19,9 @@ const Title = styled.div`
 `
 
 const InputName = styled.input`
-  width: 100%;
+  width: 80%;
   height: 2.5rem;
-  padding: 0 5px;
+  padding: 0 10px;
   font-size: 1rem;
   outline: none;
   border: 1px solid black;
@@ -37,7 +37,7 @@ const ButtonStart = styled.input`
   border-radius: 5px;
 `
 
-const AskNamePage = ({ setUserName }) => {
+const LoginPage = ({ setUserName }) => {
   const [text, setText] = React.useState('')
 
   const sendMessage = () => {
@@ -59,12 +59,17 @@ const AskNamePage = ({ setUserName }) => {
         // </div>
       }
       <Container>
-        <Title>Your Name</Title>
-        <InputName type="text" value={text} onChange={onChange} />
-        <ButtonStart type="button" value={'Start'} onClick={sendMessage} />
+        <Title>Welcome</Title>
+        <InputName
+          type="text"
+          value={text}
+          onChange={onChange}
+          placeholder={'Your name'}
+        />
+        <ButtonStart type="button" value={'Login'} onClick={sendMessage} />
       </Container>
     </React.Fragment>
   )
 }
 
-export default AskNamePage
+export default LoginPage

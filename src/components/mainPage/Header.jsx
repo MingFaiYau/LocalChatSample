@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Header = ({ resetMessages }) => {
+const Header = ({ userName, doLogout }) => {
   return (
     <div className="header-container ">
-      <div>Header</div>
-      <input type="button" value={'R'} onClick={resetMessages} />
+      <div>{`Hi, ${userName}`}</div>
+      <input type="button" value={'E'} onClick={doLogout} />
     </div>
   )
 }
