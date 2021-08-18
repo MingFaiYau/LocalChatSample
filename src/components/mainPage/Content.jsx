@@ -1,18 +1,38 @@
 import React from 'react'
+import { useAppDispatch, useAppSelector } from '../../redux/hooks'
+import {
+  createChatRoom,
+  selectMyMessages
+} from '../../redux/slices/chatRoomSlice'
+import { selectCurrentUser } from '../../redux/slices/userSlice'
 import InputBar from './InputBar'
 import MessageList from './MessageList'
 
 const Content = ({ userName }) => {
-  const [messages, setMessages] = React.useState([])
+  const [init, setInit] = React.useState(false)
+  const dispatch = useAppDispatch()
+  const myMessages = useAppSelector(selectMyMessages)
+  const currentUser = useAppSelector(selectCurrentUser)
 
-  const addMessage = React.useCallback((newMessage) => {
-    setMessages((prev) => prev.concat(newMessage))
-  }, [])
+  React.useEffect(() => {
+    if (init) return
+
+    if (myMessages?.length > 0) {
+      setInit(true)
+    } else {
+      dispatch(createChatRoom(currentUser.id))
+    }
+  }, [myMessages, currentUser, dispatch, init])
 
   return (
     <div className="content-container">
-      <MessageList messages={messages} />
-      <InputBar addMessage={addMessage} userName={userName} />
+      {!init && <h1>Loading....</h1>}
+      {init && (
+        <>
+          <MessageList messages={myMessages} />
+          <InputBar />
+        </>
+      )}
     </div>
   )
 }

@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { useAppDispatch, useAppSelector } from '../redux/hooks'
 import { switchRoute } from '../redux/slices/routerSlice'
-import { login, selectUserList } from '../redux/slices/userSlice'
+import { v4 as uuidv4 } from 'uuid'
+import { register, selectUserList } from '../redux/slices/userSlice'
 
 const Container = styled.div`
   padding: 30px;
@@ -42,50 +43,52 @@ const ButtonStart = styled.input`
   cursor: pointer;
 `
 
-const LoginPage = ({ setUserName }) => {
+const RegistrationPage = () => {
   const dispatch = useAppDispatch()
   const [text, setText] = React.useState('')
   const userList = useAppSelector(selectUserList)
 
-  const gotoRegistrationPage = (e) => {
-    dispatch(switchRoute('registration'))
+  const gotoLoginPage = (e) => {
+    dispatch(switchRoute('login'))
+  }
+  const doRegister = (e) => {
+    if (!text) {
+      alert('Please enter user name')
+      return
+    }
+    if (userList.find((val) => val.name === text)) {
+      alert('User already exist, please try other name')
+      return
+    }
+    const user = {
+      id: uuidv4(),
+      name: text
+    }
+    dispatch(register(user))
   }
 
   const onChange = (e) => {
     setText(e.target.value)
   }
-
-  const doLogin = () => {
-    if (!text) {
-      alert('Please enter user name')
-      return
-    }
-    const user = userList.find((val) => val.name === text)
-    if (!user) {
-      alert('User not found, please try again or sign-up')
-      return
-    }
-    dispatch(login(user))
-  }
   return (
     <React.Fragment>
       <Container>
-        <Title>Welcome</Title>
+        <Title>Registration</Title>
         <InputName
           type="text"
           value={text}
           onChange={onChange}
           placeholder={'Your name'}
         />
-        <ButtonStart type="button" value={'Login'} onClick={doLogin} />
+        <ButtonStart type="button" value={'Register'} onClick={doRegister} />
         <ButtonStart
           type="button"
-          value={'Sign Up'}
-          onClick={gotoRegistrationPage}
+          value={'Back to login'}
+          onClick={gotoLoginPage}
         />
       </Container>
     </React.Fragment>
   )
 }
 
-export default LoginPage
+export default RegistrationPage

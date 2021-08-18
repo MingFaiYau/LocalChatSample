@@ -1,12 +1,11 @@
-import React from 'react'
 import Content from '../components/mainPage/Content'
 import Header from '../components/mainPage/Header'
 
-const MainPage = ({ userName, doLogout }) => {
+const MainPage = () => {
   return (
     <>
-      <Header userName={userName} doLogout={doLogout} />
-      <Content userName={userName} />
+      <Header />
+      <Content />
     </>
   )
 }

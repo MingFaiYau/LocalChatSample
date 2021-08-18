@@ -56,6 +56,18 @@ body {
 .message-item-container {
   margin: 0.5rem 0.5rem 0 0.5rem;
   max-width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.message-item-container.left-message {
+  align-self: flex-start;
+}
+
+.message-item-container.right-message {
+  align-self: flex-end;
+  margin-right: 15px;
+  align-items: flex-end;
 }
 
 .message-item-author {

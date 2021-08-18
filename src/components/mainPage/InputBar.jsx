@@ -1,17 +1,23 @@
 import React from 'react'
+import { useAppDispatch, useAppSelector } from '../../redux/hooks'
+import { sendMessage } from '../../redux/slices/chatRoomSlice'
+import { selectCurrentUser } from '../../redux/slices/userSlice'
+import { v4 as uuidv4 } from 'uuid'
 
-const InputBar = ({ addMessage, userName }) => {
+const InputBar = () => {
+  const dispatch = useAppDispatch()
+  const currentUser = useAppSelector(selectCurrentUser)
   const [text, setText] = React.useState('')
 
-  const sendMessage = () => {
+  const doSendMessage = () => {
     if (!text) return
     const newMessage = {
-      id: new Date().getTime(),
+      id: uuidv4(),
       text: text,
-      author: userName,
+      user: currentUser,
       date: new Date().toISOString()
     }
-    addMessage(newMessage)
+    dispatch(sendMessage(newMessage))
     setText('')
   }
 
@@ -22,7 +28,7 @@ const InputBar = ({ addMessage, userName }) => {
   return (
     <div className="input-bar-container">
       <input type="text" value={text} onChange={onChange} />
-      <input type="button" value={'>'} onClick={sendMessage} />
+      <input type="button" value={'>'} onClick={doSendMessage} />
     </div>
   )
 }

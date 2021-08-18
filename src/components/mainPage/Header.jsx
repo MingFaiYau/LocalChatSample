@@ -1,9 +1,16 @@
 import React from 'react'
+import { useAppDispatch, useAppSelector } from '../../redux/hooks'
+import { logout, selectCurrentUser } from '../../redux/slices/userSlice'
 
-const Header = ({ userName, doLogout }) => {
+const Header = () => {
+  const dispatch = useAppDispatch()
+  const currentUser = useAppSelector(selectCurrentUser)
+  const doLogout = () => {
+    dispatch(logout())
+  }
   return (
     <div className="header-container ">
-      <div>{`Hi, ${userName}`}</div>
+      <div>{`Hi, ${currentUser.name}`}</div>
       <input type="button" value={'E'} onClick={doLogout} />
     </div>
   )
