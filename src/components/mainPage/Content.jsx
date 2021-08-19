@@ -16,17 +16,18 @@ const Content = ({ userName }) => {
 
   React.useEffect(() => {
     if (init) return
-
-    if (myMessages?.length > 0) {
-      setInit(true)
-    } else {
-      dispatch(createChatRoom(currentUser.id))
-    }
+    setTimeout(() => {
+      if (myMessages?.length > 0) {
+        setInit(true)
+      } else {
+        dispatch(createChatRoom(currentUser.id))
+      }
+    }, 1000 * 2)
   }, [myMessages, currentUser, dispatch, init])
 
   return (
     <div className="content-container">
-      {!init && <h1>Loading....</h1>}
+      {!init && <h1 className="loading">Loading....</h1>}
       {init && (
         <>
           <MessageList messages={myMessages} />

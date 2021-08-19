@@ -46,6 +46,10 @@ body {
   width: 100%;
 }
 
+.loading {
+  text-align: center;
+}
+
 .message-list-container {
   overflow: scroll;
   height: calc(100% - 4rem);
